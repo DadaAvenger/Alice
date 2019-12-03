@@ -21,19 +21,21 @@ class dailyPayAction {
     function getDailyPay(){
         $p = $this->pdata;
         $uid = $_SESSION['uid'];
-        $where = ' 1 = 1 ';
+        $startDate = date('Y-m-01');
+        $endDate = date('Y-m-d');
         if (!empty($p['start_time'])) {
             $startDate = $p['start_time'];
             $endDate = $p['end_time'];
-        } else {
-            $startDate = date('Y-m-01');
-            $endDate = date('Y-m-d');
         }
+        $where = " use_time_str  between '{$startDate}' and '{$endDate}' ";
         if (!empty($p['type'])){
             $where .= " and type = {$p['type']}";
         }
+        if (!empty($p['mark'])){
+            $where .= " and mark = {$p['mark']}";
+        }
 
-        $sql = "select * from {$this->table} where uid = {$uid} and use_time_str between '{$startDate}' and '{$endDate}'order by id desc";
+        $sql = "select * from {$this->table} where uid = {$uid} and {$where} order by id desc";
         $data  = $this->db->find($sql);
         jsonBack('succ', 1, $data);
     }
