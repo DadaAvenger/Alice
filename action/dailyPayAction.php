@@ -11,19 +11,17 @@ class dailyPayAction {
 
     # 获取数据
     function getDailyPay(){
+        $p = $this->pdata;
         $uid = $_SESSION['uid'];
-        if (!empty($this->pdata['date'])) {
-            $date = $this->pdata['date'];
-            $arr = preg_split("/\//", $date);
-            $date = $arr[2] . '-' . $arr[1] . '-' . $arr[0];
-            $startDate = date('Y-m-01', strtotime($date));
-            $endDate = date('Y-m-d', strtotime(date('Y-m', strtotime($date)) . '-' . date('t', strtotime($date))));
+        if (!empty($this->pdata['start_time'])) {
+            $startDate = $p['start_time'];
+            $endDate = $p['end_time'];
         } else {
-            $startDate = date('Y-m-01', strtotime(date("Y-m-d")));
+            $startDate = date('Y-m-01');
             $endDate = date('Y-m-d');
         }
 
-        $sql = "select * from {$this->table} where uid = {$uid} and addtime between '{$startDate}' and '{$endDate}'order by id desc";
+        $sql = "select * from {$this->table} where uid = {$uid} and use_time_str between '{$startDate}' and '{$endDate}'order by id desc";
         $data  = $this->db->find($sql);
         jsonBack('succ', 1, $data);
     }
