@@ -16,8 +16,8 @@ class indexAction{
         $data  = $this->db->fetch($sql);
         if ($data){
             if ($data['pw'] == $passWord){
-                $_SESSION['uid']       = $data['uid'];
-                $_SESSION['uName']     = $data['username'];
+                $_SESSION['uid']       = $data['id'];
+                $_SESSION['uName']     = $data['name'];
                 jsonBack('succ', 1, array('sessionid'=>session_id()));
             } else {
                 jsonBack('账号密码输入错误');

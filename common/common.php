@@ -1,5 +1,5 @@
 <?php
-if(!empty($_REQUEST['sessionid'])){ 
+if(!empty($_REQUEST['sessionid'])){
 	session_id($_REQUEST['sessionid']);
 }
 session_start();
