@@ -7,7 +7,7 @@ class Db{
 //        $this->conn = new mysqli($config["DB_HOST"], $config["DB_USERNAME"], $config["DB_PASSWORD"], $config["DB_DATABASE"]);
 
         // $this->conn = new mysqli("localhost", "root", "root", "zero");
-        $this->conn = new mysqli("120.79.4.18", "root", "84966908", "zero");
+        $this->conn = new mysqli("120.79.4.18", "root", "84966908", "zhaji_ali");
         $this->conn ->query("SET NAMES utf8");
 
         if ($this->conn->connect_error) {

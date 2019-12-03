@@ -9,6 +9,7 @@ class dailyPayAction {
         $this->table = 'daily_pay';
     }
 
+    # 获取数据
     function getDailyPay(){
         $uid = $_SESSION['uid'];
         if (!empty($this->pdata['date'])) {
@@ -27,7 +28,7 @@ class dailyPayAction {
         jsonBack('succ', 1, $data);
     }
 
-    // 添加数据
+    # 添加数据
     function addDailyPay(){
         $postArr = array();
         $type = $this->pdata['type'];

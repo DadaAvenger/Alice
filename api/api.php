@@ -1,7 +1,17 @@
 <?php
 include("../common/common.php");
+//error_reporting(0);
+if(isset($_REQUEST['log']) && $_REQUEST['log'] == 1){
+    ini_set("display_errors", "On");
+    error_reporting(E_ALL^E_NOTICE^E_DEPRECATED);
+}
 
-$pData = $_POST;
+header('Content-type:application/json;charset=utf8');
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
+header('Access-Control-Allow-Methods:POST');
+$pData = checkData($_REQUEST);
+
 $actionModule = $pData['action'] != '' ? $pData['action'].'Action' : '';
 // setLog($_REQUEST);
 if ($actionModule){
