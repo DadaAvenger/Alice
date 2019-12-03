@@ -9,16 +9,28 @@ class dailyPayAction {
         $this->table = 'daily_pay';
     }
 
+    # 获取分类
+    function getType(){
+        $table = 'cost_type';
+        $sql = "select * from {$table}";
+        $data  = $this->db->find($sql);
+        jsonBack('succ', 1, $data);
+    }
+
     # 获取数据
     function getDailyPay(){
         $p = $this->pdata;
         $uid = $_SESSION['uid'];
-        if (!empty($this->pdata['start_time'])) {
+        $where = ' 1 = 1 ';
+        if (!empty($p['start_time'])) {
             $startDate = $p['start_time'];
             $endDate = $p['end_time'];
         } else {
             $startDate = date('Y-m-01');
             $endDate = date('Y-m-d');
+        }
+        if (!empty($p['type'])){
+            $where .= " and type = {$p['type']}";
         }
 
         $sql = "select * from {$this->table} where uid = {$uid} and use_time_str between '{$startDate}' and '{$endDate}'order by id desc";
@@ -29,28 +41,25 @@ class dailyPayAction {
     # 添加数据
     function addDailyPay(){
         $postArr = array();
-        $type = $this->pdata['type'];
-        if (!in_array($type, array(1,2,3,4))) {
-            jsonBack("类型有误");
-        } else {
-            $postArr["type"] = $type;
-        }
-        $postArr['description'] = $this->pdata['use'];
-        $postArr['budget'] = $this->pdata['budget'];
-        $money = $this->pdata['cost'];
+        $p = $this->pdata;
+        $type = $p['type'];
+        $postArr["type"] = $type;
+        $postArr['mark'] = $p['mark'];
+        $money = $p['money'];
         if (!(is_float($money)||is_numeric($money))) {
             jsonBack("费用有误");
         } else {
             $postArr["money"] = $money;
         }
         $postArr['uid'] = $_SESSION['uid'];
-        $postArr['addtime'] = date("Y-m-d");
-        // var_dump(date("Y-m-d"));
+        $postArr['use_time_str'] = date("Y-m-d");
+        $postArr['create_time_str'] = date("Y-m-d H:i:s");
         $data  = $this->db->insert($postArr, $this->table);
         if ($data) jsonBack('succ', 1, $postArr);
         else jsonBack('插入失败');
     }
 
+    # 获取图表数据
     function getChart(){
         $uid = $_SESSION['uid'];
         if (!empty($this->pdata['date'])) {
