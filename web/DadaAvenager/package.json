@@ -28,7 +28,7 @@
     "svg-baker": "^1.5.0",
     "svg-baker-runtime": "^1.4.3",
     "vue": "2.6.10",
-    "vue-data-tables": "^3.4.4",
+    "vue-data-tables": "^3.4.3",
     "vue-puzzle-vcode": "^1.0.7",
     "vue-router": "3.0.6",
     "vuex": "3.1.0"
