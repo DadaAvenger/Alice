@@ -20,10 +20,23 @@ class indexAction{
                 $_SESSION['uName']     = $data['username'];
                 jsonBack('succ', 1, array('sessionid'=>session_id()));
             } else {
-                jsonBack('输入有误');
+                jsonBack('账号密码输入错误');
             }
         } else {
-            jsonBack('输入有误');
+            jsonBack('账号密码输入错误');
+        }
+    }
+
+    function register(){
+        $postArr['name'] = $this->pdata['userName'];
+        $postArr['pw'] = md5(md5($this->pdata['passWord']).SALT);
+
+        $sql = "select * from user where name = '{$postArr['name']}'";
+        $data  = $this->db->fetch($sql);
+        if ($data){
+            jsonBack('该账户已存在');
+        } else {
+            if ($this->db->insert($postArr, 'user')) jsonBack('注册成功');
         }
     }
 }
