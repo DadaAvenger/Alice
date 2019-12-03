@@ -1,0 +1,354 @@
+html,
+body {
+	font-family: "noto sans s chinese"!important;
+	font-size: 12px!important;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+html,
+body{
+	height: 100%;
+	width: 100%;
+}
+body>#app{
+	height: 100%;
+}
+h{font-weight:normal;}
+h1,h2,h3,h4,h5{font-weight:400!important;}
+.clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	overflow: hidden;
+	display: block;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+i {
+	font-style: normal;
+}
+
+ul,
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none!important;
+}
+
+a:link {
+	text-decoration: none!important;
+	cursor: pointer;
+}
+
+a img,
+img,
+fieldset {
+	border: 0;
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+	font-style: normal;
+}
+
+button {
+	outline: none;
+}
+
+.black {
+	color: black;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	line-height: 0;
+	clear: both;
+	visibility: hidden;
+	zoom: 1;
+}
+
+.prompt {
+	margin: 8px auto 50px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+.prompt img {
+	vertical-align: middle;
+}
+
+.prompt .cue {
+	color: red;
+	margin-left: 3px;
+}
+
+.box-shadow {
+	-ms-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	/*behavior: url(ie-css3.htc);*/
+}
+
+.shadow-inner {
+	-ms-box-shadow: inset 0 0 1px 0 rgba(102, 102, 102, 0.5);
+	-webkit-box-shadow: inset 0 0 1px 0 rgba(102, 102, 102, 0.5);
+	-moz-box-shadow: inset 0 0 1px 0 rgba(102, 102, 102, 0.5);
+	box-shadow: inset 0 0 1px 0 rgba(102, 102, 102, 0.5);
+}
+
+.radius-4 {
+	-moz-border-radius: 4px;
+	/* Firefox */
+	-webkit-border-radius: 4px;
+	/* Safari 和 Chrome */
+	border-radius: 4px;
+	/* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+	/*behavior: url(ie-css3.htc);*/
+	/* 通知IE浏览器调用脚本作用于'box'类 */
+}
+
+.radius-2 {
+	-moz-border-radius: 2px;
+	/* Firefox */
+	-webkit-border-radius: 2px;
+	/* Safari 和 Chrome */
+	border-radius: 2px;
+	/* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+	/*behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于'box'类 */
+}
+
+
+/* 弹性盒子 */
+
+.flex {
+	display: -webkit-box;
+	/* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box;
+	/* Firefox 17- */
+	display: -webkit-flex;
+	/* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex;
+	/* Firefox 18+ */
+	display: -ms-flexbox;
+	/* IE 10 */
+	display: flex;
+	/* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+
+.flex.items-center {
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-grow: 1;
+	-moz-flex-grow: 1;
+}
+
+.clear {
+	clear: both;
+}
+
+.red {
+	color: red;
+	background: red;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.tool-tip {
+	box-sizing: border-box;
+	position: fixed;
+	left: 23%;
+	bottom: 50%;
+	z-index: 10;
+	width: 50%;
+}
+
+.tool-tip p {
+	padding: 20px;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .6);
+	border-radius: 10px;
+	opacity: 0;
+	/*-webkit-transition: all .3s ease-out; -webkit-transform: translate3d(0,-50%,0); */
+}
+
+.tool-tip.tip p {
+	opacity: 1;
+}
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+.el-container .el-main .form-mail{
+	font-size: 12px;
+	color: gray;
+	line-height: 28px;
+  }
+  .action-list>span{
+	margin-right: 10px;
+  }
+  .form-container{
+	  width: 100%;
+	  height: 100%;
+	  background: #fff;
+	  border: 1px solid #ebebeb;
+	  padding: 0 20px;
+	  padding-bottom: 10px;
+  }
+  .form-container .form-title{
+	font-weight: bold;
+	text-align: left;
+	line-height: 60px;
+	font-size: 18px;
+	color:#000;
+	margin-bottom: 10px;
+  }
+  .pagination-bar{
+	  margin-top: 14px;
+	  float: right;
+  }
+  .el-date-editor .el-range-separator{
+	  width: 9%!important;
+  }
+  .folder-menu{
+	float: left;
+	font-size: 32px;
+	cursor: pointer;
+	line-height: 60px!important;
+  }
+  .ivu-select-dropdown{
+	position: absolute;
+	left: 0px;
+	top: 56px;
+  }
+  .layout-header .text {
+	height: 60px;
+	background: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  .el-header,
+  .el-footer {
+	background-color: #fff;
+	color: #333;
+	text-align: center;
+	line-height: 60px;
+  }
+  
+  .el-aside {
+	background-color: #d3dce6;
+	color: #333;
+	text-align: center;
+	line-height: 200px;
+  }
+  
+  .el-main {
+	background-color: #e9eef3;
+	color: #333;
+	text-align: center;
+  }
+  
+  body > .el-container {
+	margin-bottom: 40px;
+  }
+  
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+	line-height: 260px;
+  }
+  
+  .el-container:nth-child(7) .el-aside {
+	line-height: 320px;
+  }
+  .el-aside,.el-container{
+	min-height: 100%
+  }
+.el-drawer__body{
+	overflow: auto;
+}
+.el-textarea__inner{
+	font-family: "微软雅黑";
+}
+.el-table__body-wrapper .cell{
+	word-break:break-all;
+	display:-webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+}
+.el-drawer__container .el-drawer .text {
+	font-size: 14px;
+}
+.el-drawer__container .el-drawer .item {
+	padding: 18px 15px;
+}	
+.el-textarea .el-input__count{
+	background: transparent!important;
+	bottom: -3px!important;
+    right: 24px!important;
+}
+.el-tag .el-icon-close{
+	position: absolute!important;
+	top: 8px!important;
+	right: 4px!important;
+  }
+  .el-main .el-form-item__content .input-new-tag .el-input__inner{
+	float: left!important;
+  }
+  .app-main{
+	background: #e9eef3;
+  }

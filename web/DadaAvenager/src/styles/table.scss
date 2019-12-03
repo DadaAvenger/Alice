@@ -1,0 +1,40 @@
+.el-input__prefix .el-input__icon {
+    height: 100% !important;
+    width: 25px !important;
+    -webkit-transition: all 0.3s !important;
+    transition: all 0.3s !important;
+  }
+  .el-fieldset{
+      border-radius: 4px;
+      border: 1px solid #ebeef5;
+      background-color: #fff;
+      overflow: hidden;
+      color: #303133;
+      transition: .3s;
+      margin-bottom:10px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  }
+  .el-fieldset .el-form{
+      padding-top:20px; 
+  }
+  .el-fieldset .legend{
+      font-size: 16px;
+      color: #606266;
+      padding: 18px 20px;
+      border-bottom: 1px solid #ebeef5;
+      box-sizing: border-box;
+  }
+  .el-table{
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  }
+  .el-form-item label{
+    width: 10rem;
+  }
+  @media screen and (max-width:768px){
+    .el-form-item label{
+        width: 6rem;
+      }
+  }
+  .app-main{
+      padding-bottom: 30px;
+  }
