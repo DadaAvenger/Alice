@@ -5,7 +5,7 @@ class balanceAction {
     public $table;
     public function __construct(){
         $this->pdata = $_REQUEST;
-        $this->db = new Db;
+        $this->db = DB::getInstance();
         $this->table = 'users';
     }
 

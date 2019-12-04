@@ -1,11 +1,12 @@
 <?php
+require_once '../model/CostModel.php';
 class dailyPayAction {
     public $pdata;
     public $db;
     public $table;
     public function __construct(){
         $this->pdata = $_REQUEST;
-        $this->db = new Db;
+        $this->db = DB::getInstance();
         $this->table = 'daily_pay';
     }
 
@@ -21,22 +22,22 @@ class dailyPayAction {
     function getDailyPay(){
         $p = $this->pdata;
         $uid = $_SESSION['uid'];
-        $startDate = date('Y-m-01');
-        $endDate = date('Y-m-d');
-        if (!empty($p['start_time'])) {
-            $startDate = $p['start_time'];
-            $endDate = $p['end_time'];
-        }
-        $where = " use_time_str  between '{$startDate}' and '{$endDate}' ";
+        $costModel = Alice\model\CostModel::init();
+
+        $startDate = $p['start_time'] ?? date('Y-m-01');
+        $endDate = $p['end_time'] ?? date('Y-m-d');
+        $where['use_time_str'] = ['between', [$startDate, $endDate]];
+
         if (!empty($p['type'])){
-            $where .= " and type = {$p['type']}";
+            $where['type'] = $p['type'];
         }
         if (!empty($p['mark'])){
-            $where .= " and mark = {$p['mark']}";
+            $where['mark'] = $p['mark'];
         }
+        $where['uid'] = $uid;
 
-        $sql = "select * from {$this->table} where uid = {$uid} and {$where} order by id desc";
-        $data  = $this->db->find($sql);
+        $data = $costModel->getPageData($p, $where);
+//        jsonBack($costModel->getLastSql());
         jsonBack('succ', 1, $data);
     }
 
@@ -56,7 +57,7 @@ class dailyPayAction {
         $postArr['uid'] = $_SESSION['uid'];
         $postArr['use_time_str'] = date("Y-m-d");
         $postArr['create_time_str'] = date("Y-m-d H:i:s");
-        $data  = $this->db->insert($postArr, $this->table);
+        $data  = $this->db->save($this->table, $postArr);
         if ($data) jsonBack('succ', 1, $postArr);
         else jsonBack('插入失败');
     }

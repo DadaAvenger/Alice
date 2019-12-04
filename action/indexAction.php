@@ -4,9 +4,10 @@ class indexAction{
     public $db;
     public function __construct(){
         $this->pdata = $_REQUEST;
-        $this->db = new Db;
+        $this->db = DB::getInstance();
     }
 
+    # 登录
     function login(){
          if (isset($_SESSION['uid'])) jsonBack(array(1));
         $userName = $this->pdata['userName'];
@@ -26,17 +27,18 @@ class indexAction{
             jsonBack('账号密码输入错误');
         }
     }
-
-    function register(){
+    # 关闭注册
+/*    function register(){
         $postArr['name'] = $this->pdata['userName'];
         $postArr['pw'] = md5(md5($this->pdata['passWord']).SALT);
+        $postArr['email'] = $this->pdata['email'];
 
         $sql = "select * from user where name = '{$postArr['name']}'";
         $data  = $this->db->fetch($sql);
         if ($data){
             jsonBack('该账户已存在');
         } else {
-            if ($this->db->insert($postArr, 'user')) jsonBack('注册成功');
+            if ($this->db->save('user', $postArr)) jsonBack('注册成功');
         }
-    }
+    }*/
 }
