@@ -1,7 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
-
+import Qs from 'qs'
 const state = {
   token: getToken(),
   name: '',
@@ -24,11 +24,13 @@ const actions = {
   // user login
   login({ commit }, userInfo) {
     const { username, password } = userInfo
+    let params = Qs.stringify({ userName: username.trim(), passWord: password })
     return new Promise((resolve, reject) => {
-      login({ userName: username.trim(), passWord: password }).then(response => {
+      login(params).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+        console.log(data)
+        commit('SET_TOKEN', data.sessionid)
+        setToken(data.sessionid)
         resolve()
       }).catch(error => {
         reject(error)
