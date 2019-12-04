@@ -7,9 +7,9 @@
  */
 namespace Alice\model;
 
-class CostModel extends \Model
+class CostTypeModel extends \Model
 {
-    protected $table = "alice.cost";
+    protected $table = "alice.cost_type";
 //    protected $fields = [
 //        'id','account_id','create_time','content_title','object_type','object_id','object_name','content_log','operator','opt_ip'
 //    ];

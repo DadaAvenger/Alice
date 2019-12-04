@@ -16,7 +16,7 @@ class indexAction{
         $sql = "select * from user where name = '{$userName}'";
         $data  = $this->db->fetch($sql);
         if ($data){
-            if ($data['pw'] == $passWord){
+            if ($data['password'] == $passWord){
                 $_SESSION['uid']       = $data['id'];
                 $_SESSION['uName']     = $data['name'];
                 jsonBack('succ', 1, array('sessionid'=>session_id()));

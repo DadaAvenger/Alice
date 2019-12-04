@@ -22,13 +22,13 @@ class DBConfig
 
     # 线上
     static public $dada = array(
-        'index'     => 'test',
+        'index'     => 'dada',
         'type'      => 'mysql',
         'host'      => '120.79.4.18',
         'port'      => '3306',
         'user'      => 'root',
         'password'  => '84966908',
-        'dbname'    => 'zhaji_ali',
+        'dbname'    => 'alice',
         'table_pre' => '',
         'charset'   => 'utf8'
     );
