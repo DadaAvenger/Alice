@@ -36,3 +36,36 @@ function getStr($str)
     $tmpStr = addslashes($tmpStr);
     return $tmpStr;
 }
+
+# 自动加载
+spl_autoload_register(function ($className) {
+    // 加载模型类
+/*    if (substr($className, -5) == 'Model') {
+        $actionPath = MODEL_DIR . $className . '.php';
+        if (file_exists($actionPath)) {
+            require_once "{$actionPath}";
+            return true;
+        }
+    }*/
+
+    # 特殊加载自定义类
+    $prefix   = 'Alice\\';
+    $base_dir = ROOT;
+    // 判断命名空间前缀
+    $len = strlen($prefix);
+    if (strncmp($prefix, $className, $len) === 0) {
+        // get the relative class name
+        $relative_class = substr($className, $len);
+        $file           = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+        // if the file exists, require it
+        if (file_exists($file)) {
+            require $file;
+            return true;
+        }
+    }
+},true);
+
+function getAccount(){
+    if (empty($_SESSION['uid'])) jsonBack('账号过期，请重新登录');
+    return $_SESSION['uid'];
+}
