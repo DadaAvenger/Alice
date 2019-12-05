@@ -27,6 +27,15 @@ class indexAction{
             jsonBack('账号密码输入错误');
         }
     }
+
+    # 退出登录
+    public function logout() {
+//        $this->setLog('success');
+        session_destroy();
+        unset($_SESSION);
+        jsonBack('succ',1);
+    }
+
     # 关闭注册
 /*    function register(){
         $postArr['name'] = $this->pdata['userName'];

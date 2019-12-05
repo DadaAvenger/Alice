@@ -44,15 +44,19 @@ class dailyPayAction {
         if (!(is_float($money)||is_numeric($money))) {
             jsonBack("费用有误");
         }
-        $save["type"] = $p['type'];
+        $save['type'] = $p['type'];
         $save['mark'] = $p['mark'];
-        $save["money"] = $money;
+        $save['money'] = $money;
         $save['uid'] = getAccount();
         $save['date'] = date("Y-m-d");
         $save['create_time'] = date("Y-m-d H:i:s");
 
-        if ($this->costModel->create($save)) jsonBack('succ', 1, $save);
-        else jsonBack('插入失败');
+        if ($this->costModel->create($save)) {
+            jsonBack('succ', 1, $save);
+        } else {
+            jsonBack($this->costModel->getLastSql());
+            jsonBack('插入失败');
+        }
     }
 
     # 获取图表数据
