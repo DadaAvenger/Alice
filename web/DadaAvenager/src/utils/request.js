@@ -2,7 +2,15 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
-
+// axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded'
+// axios.defaults.headers.get['Content-type'] = 'application/x-www-form-urlencoded'
+// axios.defaults.transformRequest = ((data)=>{
+//   let src = ''
+//   for (let item in data) {
+//       src += encodeURIComponent(item)+'='+encodeURIComponent(data[item])+'&'
+//   }
+//   return src
+// })
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url

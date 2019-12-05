@@ -25,6 +25,8 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     let params = Qs.stringify({ userName: username.trim(), passWord: password })
+    console.log(Qs)
+    console.log(params)
     return new Promise((resolve, reject) => {
       login(params).then(response => {
         const { data } = response
