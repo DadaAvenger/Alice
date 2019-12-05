@@ -48,13 +48,13 @@ class dailyPayAction {
         $save['mark'] = $p['mark'];
         $save['money'] = $money;
         $save['uid'] = getAccount();
-        $save['date'] = date("Y-m-d");
-        $save['create_time'] = date("Y-m-d H:i:s");
+        $save['date'] = $p['date'] ?? date("Y-m-d");
+        $save['create_time'] = $p['date'] ? date("Y-m-d H:i:s", strtotime($p['date'])) : date("Y-m-d H:i:s");
 
         if ($this->costModel->create($save)) {
             jsonBack('succ', 1, $save);
         } else {
-            jsonBack($this->costModel->getLastSql());
+//            jsonBack($this->costModel->getLastSql());
             jsonBack('插入失败');
         }
     }
