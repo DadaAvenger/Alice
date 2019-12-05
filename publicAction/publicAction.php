@@ -11,7 +11,6 @@ function checkData($data)
         }
     } else {
         $data = getStr($data);
-        $data = json_decode($data, true);
     }
     return $data;
 }
