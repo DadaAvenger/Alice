@@ -10,9 +10,9 @@ namespace Alice\model;
 class CostModel extends \Model
 {
     protected $table = "alice.cost";
-//    protected $fields = [
-//        'id','account_id','create_time','content_title','object_type','object_id','object_name','content_log','operator','opt_ip'
-//    ];
+    protected $fields = [
+        'id','date','create_time','uid','type','money','mark'
+    ];
 
     public function __construct()
     {
