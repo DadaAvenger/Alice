@@ -58,7 +58,7 @@
     <data-tables-server
       :data="data"
       :table-props="pagination.tableProps"
-      :total="pagination.total_number"
+      :total="pagination.total_number?pagination.total_number:1"
       @query-change="loadData"
       :actionCol="actionCol"
       :filters="filters"
@@ -80,7 +80,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { Message, PageHeader } from "element-ui";
-
+import Cookies from 'js-cookie'
 export default {
   name: "Dashboard",
   data() {
@@ -213,13 +213,15 @@ export default {
       let page_size = queryInfo.pageSize != null ? queryInfo.pageSize : "10";
       let orderDirection = queryInfo.sort.order;
       let orderField = queryInfo.sort.prop;
-
       let params = {
-        sessionId:"",
+        sessionId:Cookies.get("vue_admin_template_token"),
         page,
         page_size,
-        q: queryInfo.filters[0].value, //搜索
-        orderDirection,
+        start_time: this.startDate, //开始日期
+        end_time: this.endDate, //结束日期
+        type:queryInfo.filters[1].value,
+        mark: queryInfo.filters[0].value, //搜索
+        orderDirection:((orderDirection=="descending")?"SORT_DESC":"SORT_ASC"),
         orderField
       };
       this.$store
