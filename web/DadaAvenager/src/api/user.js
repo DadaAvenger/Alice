@@ -18,7 +18,7 @@ export function getInfo(token) {
 
 export function logout() {
   return request({
-    url: '/user/logout',
+    url: '/api.php?action=index&opt=logout',
     method: 'post'
   })
 }

@@ -215,6 +215,7 @@ export default {
       let orderField = queryInfo.sort.prop;
 
       let params = {
+        sessionId:"",
         page,
         page_size,
         q: queryInfo.filters[0].value, //搜索
