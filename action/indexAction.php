@@ -9,7 +9,7 @@ class indexAction{
 
     # 登录
     function login(){
-         if (isset($_SESSION['uid'])) jsonBack(array(1));
+         if (isset($_SESSION['uid'])) jsonBack('succ', 1, '已登录');
         $userName = $this->pdata['userName'];
         $passWord = md5(md5($this->pdata['passWord']).SALT);
 
