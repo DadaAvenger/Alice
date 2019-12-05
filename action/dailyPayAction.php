@@ -31,6 +31,9 @@ class dailyPayAction {
         if (!empty($p['mark'])){
             $where['mark'] = $p['mark'];
         }
+        if (!empty($p['start_money']) && !empty($p['end_money'])){
+            $where['money'] = ['between', [$p['start_money'], $p['end_money']]];
+        }
         $where['uid'] = getAccount();
 
         $data = $this->costModel->getPageData($p, $where);
