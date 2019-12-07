@@ -21,6 +21,9 @@ class dailyPayAction {
     # 获取数据
     function getDailyPay(){
         $p = $this->pdata;
+        $typeModel = \Alice\model\CostTypeModel::init();
+        $typeData  = $typeModel->lists(['key' => 'id']);
+
         $startDate = $p['start_time'] ?? date('Y-m-01');
         $endDate = $p['end_time'] ?? date('Y-m-d');
         $where['date'] = ['between', [$startDate, $endDate]];
@@ -37,6 +40,9 @@ class dailyPayAction {
         $where['uid'] = getAccount();
 
         $data = $this->costModel->getPageData($p, $where);
+        foreach ($data['list'] as &$r){
+            $r['type_name'] = $typeData[$r['type']]['name'];
+        }
         jsonBack('succ', 1, $data);
     }
 
