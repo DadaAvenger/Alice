@@ -68,7 +68,37 @@ class dailyPayAction {
         }
     }
 
-    # 获取图表数据
-    function getChart(){
+    # 获取饼图图表数据
+    function getPieChart(){
+        $p = $this->pdata;
+        $totalData = [];
+        $typeModel = \Alice\model\CostTypeModel::init();
+        $typeData  = $typeModel->lists(['key' => 'id']);
+
+        $pieType = $p['pie_type'] ?? 1;
+        $startDate = $p['start_time'] ?? date('Y-m-01');
+        $endDate = $p['end_time'] ?? date('Y-m-d');
+        $where['date'] = ['between', [$startDate, $endDate]];
+
+        if (!empty($p['type'])){
+            $where['type'] = $p['type'];
+        }
+
+        $where['uid'] = getAccount();
+
+        $data = $this->costModel->getPageData($p, $where);
+        foreach ($data['list'] as $r){
+            if ($pieType == 1){
+                # 单饼图，汇总
+                $totalData[$r['type']]['money'] += $r['money'];
+                if (!isset($totalData[$r['type']]['type_name'])) $totalData[$r['type']]['type_name'] = $typeData[$r['type']]['name'];
+            } else {
+                # 多饼图，按月份区分
+                $month = date('m', strtotime($r['date']));
+                $totalData[$month][$r['type']] += $r['money'];
+                if (!isset($totalData[$month][$r['type']]['type_name'])) $totalData[$month][$r['type']]['type_name'] = $typeData[$r['type']]['name'];
+            }
+        }
+        jsonBack('succ', 1, $totalData);
     }
 }
