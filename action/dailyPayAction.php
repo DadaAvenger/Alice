@@ -50,7 +50,30 @@ class dailyPayAction {
     function addDailyPay(){
         $p = $this->pdata;
         $money = $p['money'];
-        if (!(is_float($money)||is_numeric($money))) {
+        if (!(is_float($money) || is_numeric($money))) {
+            jsonBack("费用有误");
+        }
+        $save['type'] = $p['type'];
+        $save['mark'] = $p['mark'];
+        $save['money'] = $money;
+        $save['uid'] = getAccount();
+        $save['date'] = $p['date'] ?? date("Y-m-d");
+        $save['create_time'] = $p['date'] ? date("Y-m-d H:i:s", strtotime($p['date'])) : date("Y-m-d H:i:s");
+
+        if ($this->costModel->update($save, ['id' => $p['id']])) {
+            jsonBack('succ', 1, $save);
+        } else {
+//            jsonBack($this->costModel->getLastSql());
+            jsonBack('更新失败');
+        }
+    }
+
+    # 修改
+    function editDailyPay(){
+        $p = $this->pdata;
+        $money = $p['money'];
+        if (!empty($p['id'])) jsonBack('缺少行id');
+        if (!(is_float($money) || is_numeric($money))) {
             jsonBack("费用有误");
         }
         $save['type'] = $p['type'];
@@ -62,6 +85,19 @@ class dailyPayAction {
 
         if ($this->costModel->create($save)) {
             jsonBack('succ', 1, $save);
+        } else {
+//            jsonBack($this->costModel->getLastSql());
+            jsonBack('插入失败');
+        }
+    }
+
+    # 删除
+    function deleteDailyPay(){
+        $p = $this->pdata;
+        if (!empty($p['id'])) jsonBack('缺少行id');
+
+        if ($this->costModel->delete(['id' => $p['id']])) {
+            jsonBack('succ', 1, '删除成功');
         } else {
 //            jsonBack($this->costModel->getLastSql());
             jsonBack('插入失败');
