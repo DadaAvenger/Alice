@@ -14,13 +14,21 @@ class balanceAction {
     function getBalanceByMonth(){
         $p = $this->pdata;
 
-        $startDate = $p['start_time'] ?? date('Y-m');
-        $endDate = $p['end_time'] ?? date('Y-m');
-        $where['date'] = ['between', [$startDate, $endDate]];
+        $startDate = !empty($p['start_time']) ? $p['start_time'] : date('Y-m');
+        $endDate = !empty($p['end_time']) ? $p['end_time'] : date('Y-m');
+        $where['month'] = ['between', [$startDate, $endDate]];
 
         $where['uid'] = getAccount();
 
         $data = $this->costBudgetModel->getPageData($p, $where);
+        if (!$data['list']){
+            include 'dailyPayAction.php';
+            $dailyAction = new dailyPayAction();
+            $dailyAction->autoUpdateBalance();
+            $data = $this->costBudgetModel->getPageData($p, $where);
+//            jsonBack($this->costBudgetModel->getLastSql());
+        }
+
 
         jsonBack('succ', 1, $data);
     }

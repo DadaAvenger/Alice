@@ -58,7 +58,7 @@ class dailyPayAction {
         foreach ($data['list'] as &$r){
             $r['type_name'] = $typeData[$r['type']]['name'];
         }
-        jsonBack('succ', 1, $data);
+        jsonBackT('succ', 1, $data);
     }
 
     # 添加数据
@@ -175,7 +175,7 @@ class dailyPayAction {
             $balance = $defaultBudget['budget'] - current($costData)['money_total'];
 
             $save['uid'] = getAccount();
-            $save['budget'] = $defaultBudget;
+            $save['budget'] = $defaultBudget['budget'];
             $save['balance'] = $balance;
             $save['create_time'] = date('Y-m-d H:i:s');
             $save['month'] = date('Y-m');
