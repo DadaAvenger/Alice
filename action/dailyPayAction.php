@@ -9,6 +9,24 @@ class dailyPayAction {
         $this->costModel = \Alice\model\CostModel::init();
     }
 
+    # 获取用户已添加分类
+    function getAccountType(){
+        $accountType = $this->costModel->lists(['where' => ['uid' => getAccount()], 'field' => 'count(type) as type_count, type',
+            'key' => 'type', 'orderBy' => 'type_count desc', 'groupBy' => 'type']);
+
+        $typeModel = \Alice\model\CostTypeModel::init();
+        $data  = $typeModel->lists();
+        $data = array_column($data, NULL, 'id');
+
+        foreach ($accountType as $r){
+//            jsonBack($data[$r['type']]);
+            $row = ['id' => $r['type'], 'name' => $data[$r['type']]['name']];
+            $ret[] = $row;
+        }
+
+        jsonBack('succ', 1, $ret);
+    }
+
     # 获取分类
     function getType(){
         $typeModel = \Alice\model\CostTypeModel::init();
@@ -58,7 +76,7 @@ class dailyPayAction {
         foreach ($data['list'] as &$r){
             $r['type_name'] = $typeData[$r['type']]['name'];
         }
-        jsonBackT('succ', 1, $data);
+        jsonBack('succ', 1, $data);
     }
 
     # 添加数据

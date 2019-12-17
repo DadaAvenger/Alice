@@ -23,7 +23,13 @@ var Calculator = {
                 clickNum = 0;
             }
         });
-        
+
+        $('#type-select,#startDate,#endDate').bind('change',function(){
+            Calculator.GetDailyPay();
+        });
+
+
+        this.getAccountType();
         this.GetBalance(Config.Uid);
         this.GetDailyPay();
 
@@ -61,14 +67,14 @@ var Calculator = {
         $.ajaxSetup({ 
             async : false 
         });    
-        $.post(url, {action: 'balance', opt : 'getBalance', uid : Config.Uid}, function(data, status){
+        $.post(url, {action: 'balance', opt : 'getBalanceByMonth', uid : Config.Uid}, function(data, status){
             if (status == "success"){
                 if (data){
                     // console.log(data);
-                    var arr = data['data'];
+                    var arr = data['data']['list'][0];
                     $("#balance").html(arr['balance']);
-                    $("#month_budget").html(arr['month_budget']);
-                    $("#month_balance").html(arr['month_balance']);
+                    $("#month_budget").html(arr['budget']);
+                    $("#month_balance").html(arr['balance']);
                     $("#rest_day").html(arr['rest_day']);
                 }
             }
@@ -102,6 +108,7 @@ var Calculator = {
         var url = Config.Url+'/api/api.php';
         var startDate = $("input[name='startDate']").val();
         var endDate = $("input[name='endDate']").val();
+        var type = $("#type-select").val();
 
         $.ajaxSetup({ 
             async : false 
@@ -110,20 +117,22 @@ var Calculator = {
             action: 'dailyPay',
             opt : 'getDailyPay',
             uid : Config.Uid,
-            startDate : startDate,
-            endDate : endDate,
+            start_time : startDate,
+            end_time : endDate,
+            type : type,
             sessionid:Config.SessionId
         }, function(data, status){
             if (status == "success"){
                 if (data){
-                    var arr = data['data'];
+                    var arr = data['data']['list'];
                     $("#dailyPay-table").html('');
                     for (var i in arr){
                         var tableRow = `
                             <tr class="odd gradeX">
-                                <td>${arr[i]['addtime']}</td>
-                                <td class="description" n="description" v="${arr[i]['description']}" id="${arr[i]['id']}">${arr[i]['description']}</td>
+                                <td>${arr[i]['date']}</td>
                                 <td class="money" n="money" v="${arr[i]['money']}" did="${arr[i]['id']}">${arr[i]['money']}</td>
+                                <td class="description" n="description" v="${arr[i]['mark']}" id="${arr[i]['id']}">${arr[i]['mark']}</td>
+                                <td class="description" n="type" v="${arr[i]['type_name']}" id="${arr[i]['id']}">${arr[i]['type_name']}</td>
                             </tr>
                         `;
                         $("#dailyPay-table").append(tableRow);
@@ -168,6 +177,29 @@ var Calculator = {
                 }
                 Calculator.GetDailyPay();
                 Calculator.GetBalance();
+            }
+        }, 'json');
+    },
+
+    getAccountType : function(){
+        var url = Config.Url+'/api/api.php';
+
+        $.ajaxSetup({
+            async : false
+        });
+        $.post(url, {
+            action: 'dailyPay',
+            opt : 'getAccountType',
+            sessionid:Config.SessionId
+        }, function(data, status){
+            if (status == "success"){
+                if (data){
+                    var arr = data['data'];
+                    $("#type-select").html('<option value="" disabled selected style="display:none;">消费类型</option>');
+                    for (var i in arr){
+                        $("#type-select").append(`<option value="${arr[i]['id']}" >${arr[i]['name']}</option>`);
+                    }
+                }
             }
         }, 'json');
     },

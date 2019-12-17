@@ -511,13 +511,18 @@
                 </div>
                 <div class="grid-body ">
                   <!-- 日历 -->
-                  <div class="input-append success date col-lg-6" style="padding:0 2px 0 0;width:100px;margin-right: 50px;">
+                  <div class="input-append success date col-lg-6" style="padding:0 2px 0 0;width:200px;margin-right: 50px;">
                     <input type="text" class="form-control" id="sandbox-advance" name="startDate">
                     <span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span>
                   </div>
-                  <div class="input-append success date col-lg-6" style="padding:0 2px 0 0;width:100px;margin-right: 20px;">
+                  <div class="input-append success date col-lg-6" style="padding:0 2px 0 0;width:200px;margin-right: 50px;">
                     <input type="text" class="form-control" id="sandbox-end" name="endDate">
                     <span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span>
+                  </div>
+                  <div class="col-lg-6" style="padding:0 2px 0 0;width:200px;margin-right: 20px;">
+                    <select id="type-select" style="" >
+                      <option value="" disabled selected style="display:none;">消费类型</option>
+                    </select>
                   </div>
                   <br><br><br>
                   <!-- <input type="date" name="user_date" /> -->
@@ -525,8 +530,9 @@
                     <thead>
                       <tr>
                         <th>Time</th>
-                        <th>Mark</th>
                         <th>Cost</th>
+                        <th>Mark</th>
+                        <th>Type</th>
                       </tr>
                     </thead>
                     <tbody id = "dailyPay-table">
@@ -817,7 +823,6 @@
     <!-- <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
     <script src="assets/js/cool/config.js" type="text/javascript"></script>
     <script src="assets/js/cool/main.js" type="text/javascript"></script>
-    <script src="assets/js/cool/calculator.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-block-ui/jqueryblockui.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
@@ -856,25 +861,44 @@
      
      $('#sandbox-advance').datepicker({
         format: "yyyy-mm-dd",
-        startView: 1,
+        // startView: 1,
         // daysOfWeekDisabled: "3,4",
         autoclose: true,
         todayHighlight: true
       });
 
+
     $('#sandbox-end').datepicker({
         format: "yyyy-mm-dd",
-        startView: 1,
+        // startView: 1,
         // daysOfWeekDisabled: "3,4",
         autoclose: true,
         todayHighlight: true
     });
+
+    //文本框初始日期设置,这里间隔为7天
+    $('#sandbox-advance').val(getDay('begin'));
+    $('#sandbox-end').val(getDay('end'));
+    //正数为往后加日期，负数为昨天、前天。。。，str为日期间隔符，例如 -,/
+    function getDay(str) {
+      var today = new Date();
+      var oDay = today.getDate().toString();
+      var oYear = today.getFullYear();
+      var oMoth = (today.getMonth() + 1).toString();
+      if (str == 'begin') {
+        return oYear +'-'+ oMoth +'-'+  '01';
+      } else {
+        return oYear +'-'+ oMoth + '-'+oDay;
+      }
+    }
 
      $('#sandbox-advance,#sandbox-end').datepicker().on('changeDate', function(ev){
         //点击日期更新报表
          Calculator.GetDailyPay();
      });
    </script>
+    <script src="assets/js/cool/calculator.js" type="text/javascript"></script>
+
     <!-- END JAVASCRIPTS -->
   </body>
 </html>

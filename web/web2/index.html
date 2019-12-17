@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
-    <!-- Bootstrap-select -->
+    <!-- bootstrap样式表 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 时间选择器样式表 -->
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
     <style type="text/css">
         .body-class {
@@ -27,17 +30,24 @@
     </style>
 
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>-->
     <!-- <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script> -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+<!--    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">-->
     <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/locale/nl.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/locale/nl.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+
+    <!-- 时间选择器前置脚本 -->
+    <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment-with-locales.min.js"></script>
+
+    <!-- 时间选择器核心脚本 -->
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- bootstarp-select -->
 
@@ -67,6 +77,14 @@
 									</span>
                     </div>
                 </div>
+            </div>
+            <br>
+            <div class="row">
+                <label class="control-label col-sm-1" for="startDate">预算</label>
+                <div class="" id="budget"></div>
+                <br>
+                <label class="control-label col-sm-1" for="startDate">余额</label>
+                <div class="" id="balance"></div>
             </div>
         </div>
     </div>
@@ -351,41 +369,46 @@
     });
 
 
-
     //DateTimePicker
     var defaults = {
 
         // calendarWeeks: true,
-        showClear: true,
-        showClose: true,
+        // todayHighlight: true,
+        // showClear: true,
+        // showClose: true,
         allowInputToggle: true,
         useCurrent: false,
-        ignoreReadonly: true,
+        // ignoreReadonly: true,
         // minDate: new Date(),
         toolbarPlacement: 'top',
-        locale: 'nl',
-        icons: {
-            time: 'fa fa-clock-o',
-            date: 'fa fa-calendar',
-            up: 'fa fa-angle-up',
-            down: 'fa fa-angle-down',
-            previous: 'fa fa-angle-left',
-            next: 'fa fa-angle-right',
-            today: 'glyphicon glyphicon-screenshot',
-            clear: 'fa fa-trash',
-            close: 'fa fa-times'
-        }
+        // format:'YYYY-MM-DD',
+        // startDate: "-7d",
+        // endDate: "+3d",
+        // todayHighlight: true,
+        // locale: 'nl',
+        // icons: {
+        //     time: 'fa fa-clock-o',
+        //     date: 'fa fa-calendar',
+        //     up: 'fa fa-angle-up',
+        //     down: 'fa fa-angle-down',
+        //     previous: 'fa fa-angle-left',
+        //     next: 'fa fa-angle-right',
+        //     today: 'glyphicon glyphicon-screenshot',
+        //     clear: 'fa fa-trash',
+        //     close: 'fa fa-times'
+        // }
     };
 
 
     $(function() {
         var optionsDatetime = $.extend({}, defaults, {format:'YYYY-MM-DD HH:mm'});
-        var optionsDate = $.extend({}, defaults, {format:'YYYY-MM-DD'});
+        var optionsDate = $.extend({}, defaults, {format:'YYYY-MM-DD',locale: moment.locale('zh-CN')});
+        // var optionsDate = $.extend({}, defaults, {format:'YYYY-MM-DD'});
         var optionsTime = $.extend({}, defaults, {format:'HH:mm'});
 
         $('.datepicker').datetimepicker(optionsDate);
-        $('.timepicker').datetimepicker(optionsTime);
-        $('.datetimepicker').datetimepicker(optionsDatetime);
+        // $('.timepicker').datetimepicker(optionsTime);
+        // $('.datetimepicker').datetimepicker(optionsDatetime);
 
     });
 
@@ -407,7 +430,6 @@
                     var name = items[item]['name'];
                     str += '<option value="'+id+'">'+name+'</option>';
                 }
-                echo(str);
                 $('#type').append(str);
                 $('.selectpicker').selectpicker('refresh');
                 $('.selectpicker').selectpicker('show');
@@ -430,20 +452,9 @@
         },
         dataType: "json",
         success: function(data){
-            if (data.data){
-                $('#type').html();
-                var items = data.data;
-                var str = '';
-                for(item in items)
-                {
-                    var id = items[item]['id'];
-                    var name = items[item]['name'];
-                    str += '<option value="'+id+'">'+name+'</option>';
-                }
-                echo(str);
-                $('#type').append(str);
-                $('.selectpicker').selectpicker('refresh');
-                $('.selectpicker').selectpicker('show');
+            if (data.data['list']){
+                $('#budget').html(data.data['list'][0]['budget']);
+                $('#balance').html(data.data['list'][0]['balance']);
             }
         },
         error:function(data){
