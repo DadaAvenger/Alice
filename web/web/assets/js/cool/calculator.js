@@ -24,7 +24,7 @@ var Calculator = {
             }
         });
 
-        $('#type-select,#startDate,#endDate').bind('change',function(){
+        $('#source,#startDate,#endDate').bind('change',function(){
             Calculator.GetDailyPay();
         });
 
@@ -108,7 +108,7 @@ var Calculator = {
         var url = Config.Url+'/api/api.php';
         var startDate = $("input[name='startDate']").val();
         var endDate = $("input[name='endDate']").val();
-        var type = $("#type-select").val();
+        var type = $("#source").val();
 
         $.ajaxSetup({ 
             async : false 
@@ -195,9 +195,9 @@ var Calculator = {
             if (status == "success"){
                 if (data){
                     var arr = data['data'];
-                    $("#type-select").html('<option value="" disabled selected style="display:none;">消费类型</option>');
+                    $("#source").html('');
                     for (var i in arr){
-                        $("#type-select").append(`<option value="${arr[i]['id']}" >${arr[i]['name']}</option>`);
+                        $("#source").append(`<option value="${arr[i]['id']}" >${arr[i]['name']}</option>`);
                     }
                 }
             }
