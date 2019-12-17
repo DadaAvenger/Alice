@@ -5,6 +5,7 @@
  * Date: 2019/7/31
  * Time: 11:52
  */
+
 namespace Alice\model;
 
 class CostModel extends \Model
