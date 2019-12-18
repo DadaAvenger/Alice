@@ -10,7 +10,7 @@ class dailyPayAction {
     }
 
     # 获取用户已添加分类
-    function getAccountType(){
+    function getAccountType($inside = false){
         $accountType = $this->costModel->lists(['where' => ['uid' => getAccount()], 'field' => 'count(type) as type_count, type',
             'key' => 'type', 'orderBy' => 'type_count desc', 'groupBy' => 'type']);
 
@@ -19,10 +19,10 @@ class dailyPayAction {
         $data = array_column($data, NULL, 'id');
 
         foreach ($accountType as $r){
-//            jsonBack($data[$r['type']]);
             $row = ['id' => $r['type'], 'name' => $data[$r['type']]['name']];
             $ret[] = $row;
         }
+        if ($inside) return $ret;
 
         jsonBack('succ', 1, $ret);
     }
@@ -203,4 +203,77 @@ class dailyPayAction {
             $costBudgetModel->update(['balance' => $balance], ['id' => $budgetData['id']]);
         }
     }
+
+    public function getColumnChart(){
+        $p = $this->pdata;
+        $barData = [];
+
+        $p['start_time'] = '2019-06-11';
+        $startDate = $p['start_time'] ? date('Y-m-01', strtotime($p['start_time'])) : date('Y-m-01');
+        $endDate = $p['end_time'] ?? date('Y-m-d');
+        $where['date'] = ['between', [$startDate, $endDate]];
+
+        if (!empty($p['type'])){
+            $where['type'] = $p['type'];
+        }
+
+        $where['uid'] = getAccount();
+        $data = $this->costModel->getPageData($p, $where);
+
+        $typeData = $this->getAccountType(true);
+        $typeArr = array_column($typeData, NULL,'id');
+        $typeName = array_column($typeData, 'name');
+
+        $ret['category'] = $this->get_months($startDate, $endDate);
+        $ret['legend'] = $typeName;
+
+        $color = ['#5e7e54','#e44f2f','#81b6b2','#eba422','#5e7e54',
+            '#e44f2f','#81b6b2','#eba422','#5e7e54','#e44f2f'];
+        foreach ($data['list'] as $row){
+            $month = date('Y-m', strtotime($row['date']));
+            $barData[$row['type']][$month] += $row['money'];
+        }
+        jsonBack($barData);
+
+
+        foreach ($ret['category'] as $d){
+            foreach ($barData as $type => $row) {
+                if (!isset($barData[$type][$d])) {
+                    $barData[$type][$d] = 0;
+                }
+            }
+        }
+                jsonBack($barData);
+
+        $data = [];
+        foreach ($barData as $type => $row){
+            $r['name'] = $typeArr[$type]['name'];
+            $r['type'] = 'bar';
+            $r['stack'] = '总量';
+            $r['label']['normal'] = ['show' => true, 'position' => 'insideRight'];
+//            $r['itemStyle']['normal'] = ['color' => $color[$type]];
+            $r['data'] = array_values($row);
+            $data[] = $r;
+        }
+
+        $ret['legend'] = array_values($ret['legend']);
+        $ret['data'] = $data;
+
+        jsonBack('succ', 1, $ret);
+    }
+
+    /**
+     * 获取指定日期之间的各个月
+     */
+    public function get_months($sdate, $edate) {
+        $range_arr = array();
+        do {
+            $BeginDate=date('Y-m-01', strtotime($sdate));
+            $range_arr[] = date('Y-m', strtotime($sdate));
+            $end_day = date('Y-m-d', strtotime("$BeginDate +1 month -1 day"));
+            $sdate = date('Y-m-d', strtotime($sdate.'+1 month'));
+        }while($end_day < $edate);
+        return $range_arr;
+    }
+
 }
