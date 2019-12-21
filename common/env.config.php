@@ -1,2 +1,2 @@
 <?php
-//define('DEBUG_DEV', true);
+define('DEBUG_DEV', true);
