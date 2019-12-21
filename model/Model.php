@@ -659,6 +659,7 @@ class Model
      */
     public function getPageData($pdata, $where = [] ,$key = false,$field='*', $groupBy = false,$having = '', $download = false) {
         $page = $pdata['page'] ?? 1;
+        if (empty($pdata['page_size']) && $pdata['rows'])  $pdata['page_size'] = $pdata['rows'];
         $page_size = $pdata['page_size'] ?? 50;
         $orderField = $pdata['orderField'] ?? 'id';
         $orderDirection = $pdata['orderDirection'] ?? 'SORT_DESC';

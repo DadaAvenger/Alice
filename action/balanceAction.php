@@ -6,37 +6,33 @@ class balanceAction {
     public function __construct(){
         $this->pdata = $_REQUEST;
         $this->db = DB::getInstance();
-        $this->table = 'users';
+        $this->costBudgetModel = \Alice\model\CostBudgetModel::init();
     }
 
-    function getBalance(){
-        $uid = $_SESSION['uid'];
-        $sql = "select balance, month_balance, month_budget from {$this->table} where uid = {$uid}";
-        $total  = current($this->db->find($sql));
 
-        $startDate = $this->pdata['startDate'] ?? date('Y-m-01', strtotime(date("Y-m-d")));
-        $endDate = $this->pdata['endDate'] ?? date('Y-m-d');
-        $sql = "select budget,money from daily_pay where uid = {$uid} and addtime between '{$startDate}' and '{$endDate}'order by id desc";
-        $data = $this->db->find($sql);
-        // var_dump($sql);
-        $total['month_balance'] = $total['month_budget'];
-        foreach ($data as $r){
-            if ($r['budget']) $total['month_balance'] += $r['money'];
-            else $total['month_balance'] -= $r['money'];
+    # 获取预算余额
+    function getBalanceByMonth(){
+        $p = $this->pdata;
+
+        $startDate = !empty($p['start_time']) ? $p['start_time'] : date('Y-m');
+        $endDate = !empty($p['end_time']) ? $p['end_time'] : date('Y-m');
+        $where['month'] = ['between', [$startDate, $endDate]];
+
+        $where['uid'] = getAccount();
+
+        $data = $this->costBudgetModel->getPageData($p, $where);
+        if (!$data['list']){
+            include 'dailyPayAction.php';
+            $dailyAction = new dailyPayAction();
+            $dailyAction->autoUpdateBalance();
+            $data = $this->costBudgetModel->getPageData($p, $where);
+//            jsonBack($this->costBudgetModel->getLastSql());
         }
-        $total['month_balance'] = sprintf("%.2f",$total['month_balance']);
-        $total['rest_day'] = $this->getRestDay();
 
-        jsonBack('succ', 1, $total);
+
+        jsonBack('succ', 1, $data);
     }
 
-    function editBalance(){
-        $postArr['uid'] = $_SESSION['uid'];
-        $postArr['month_budget'] = $this->pdata['month_budget'];
-        $data = $this->db->update($postArr, $this->table, 'uid');
-        if ($data) jsonBack('succ', 1, $postArr);
-        else jsonBack('更新失败');
-    }
 
     function getRestDay(){
         $day = date("d");

@@ -19,7 +19,7 @@ class indexAction{
             if ($data['password'] == $passWord){
                 $_SESSION['uid']       = $data['id'];
                 $_SESSION['uName']     = $data['name'];
-                jsonBack('succ', 1, array('sessionid'=>session_id()));
+                jsonBack('succ', 1, array('sessionid'=>session_id(), 'uid' => $data['id'], 'username' => $data['name']));
             } else {
                 jsonBack('账号密码输入错误');
             }

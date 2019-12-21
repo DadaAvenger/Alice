@@ -21,6 +21,16 @@ function jsonBack($msg = 'failed', $ret = -1, $data = []){
     exit;
 }
 
+# 返回格式统一2
+function jsonBackT($msg = 'failed', $ret = -1, $data = []){
+    if (DEBUG_DEV) {
+        echo json_encode(['rows' => $data['list'], 'total' => $data['total_number']], JSON_UNESCAPED_SLASHES);
+    } else {
+        echo json_encode(['ret' => $ret, 'msg' => $msg, 'data' => $data], JSON_UNESCAPED_SLASHES);
+    }
+    exit;
+}
+
 # 记录log
 function setLog($content){
 	$content = urlencode(json_encode($content));
@@ -66,6 +76,7 @@ spl_autoload_register(function ($className) {
 },true);
 
 function getAccount(){
+    if (DEBUG_DEV)return 2;
     if (empty($_SESSION['uid'])) jsonBack('账号过期，请重新登录');
     return $_SESSION['uid'];
 }

@@ -10,6 +10,7 @@ define('DB', ROOT . 'db/');
 define('PUBLIC_DIR', ROOT . 'publicAction/');
 define('ACTION_DIR', ROOT . 'action/');
 define('SALT', 'ZhaJi');
+include("env.config.php");   //开发环境常量定义
 
 require_once ('DB.config.php');
 require_once (PUBLIC_DIR.'publicAction.php');
