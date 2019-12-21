@@ -93,12 +93,12 @@ class dailyPayAction {
         $save['date'] = $p['date'] ?? date("Y-m-d");
         $save['create_time'] = $p['date'] ? date("Y-m-d H:i:s", strtotime($p['date'])) : date("Y-m-d H:i:s");
 
-        if ($this->costModel->create($save, ['id' => $p['id']])) {
+        if ($this->costModel->create($save)) {
             $this->autoUpdateBalance();
             jsonBack('succ', 1, $save);
         } else {
 //            jsonBack($this->costModel->getLastSql());
-            jsonBack('更新失败');
+            jsonBack('增加失败');
         }
     }
 
