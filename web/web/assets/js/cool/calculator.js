@@ -109,6 +109,7 @@ var Calculator = {
         var startDate = $("input[name='startDate']").val();
         var endDate = $("input[name='endDate']").val();
         var type = $("#source").val();
+        console.log(type);
 
         $.ajaxSetup({ 
             async : false 
@@ -195,7 +196,7 @@ var Calculator = {
             if (status == "success"){
                 if (data){
                     var arr = data['data'];
-                    $("#source").html('');
+                    $("#source").html(`<option value="all" >全部</option>`);
                     for (var i in arr){
                         $("#source").append(`<option value="${arr[i]['id']}" >${arr[i]['name']}</option>`);
                     }

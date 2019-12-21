@@ -61,7 +61,7 @@ class dailyPayAction {
         $endDate = $p['end_time'] ?? date('Y-m-d');
         $where['date'] = ['between', [$startDate, $endDate]];
 
-        if (!empty($p['type'])){
+        if (!empty($p['type']) && $p['type'] != 'all'){
             $where['type'] = $p['type'];
         }
         if (!empty($p['mark'])){
