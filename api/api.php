@@ -27,7 +27,7 @@ if ($actionModule){
         jsonBack($pData['action'] . '->' . $func . '方法不存在');
     }
 //    if ($pData['opt'] == 'register') $act->$func();
-//    if ($pData['opt'] != 'login'  &&  !isset($_SESSION['uid'])) jsonBack('请重新登录');
+    if ($pData['opt'] != 'login'  &&  !isset($_SESSION['uid'])) jsonBack('请重新登录');
         $act->$func();
     
 }
