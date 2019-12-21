@@ -122,11 +122,56 @@ var Calculator = {
                 };
                 // console.log(data['data']['data']);
                 // option.series.push(data['data']['data']);
+
+                var series = option["series"];
+                var fun = function (params) {
+                    var data3 =0;
+                    for(var i=0,l=series.length;i<l;i++){
+                        data3 += series[i].data[params.dataIndex][1]
+                    }
+                    return data3
+                };
+                //加载页面时候替换最后一个series的formatter
+                series[series.length-1]["label"]["normal"]["formatter"] = fun;
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+                //legend点击事件，根据传过来的obj.selected得到状态是true的legend对应的series的下标，再去计算总和
+                myChart.on("legendselectchanged", function(obj) {
+                    var b = obj.selected
+                        , d = [];
+                    //alert(JSON.stringify(b))
+                    for(var key in b){
+                        if(b[key]){
+                            //alert(key)
+                            for(var i=0,l=series.length;i<l;i++){
+                                var changename = series[i]["name"];
+                                if(changename == key){
+                                    d.push(i);//得到状态是true的legend对应的series的下标
+                                }
+                            }
+                        }
+                    }
+                    var fun1 = function (params) {
+                        var data3 =0;
+                        for(var i=0,l=d.length;i<l;i++){
+                            for(var j=0,h=series.length;j<h;j++){
+                                if(d[i] == j){
+                                    data3 += series[j].data[params.dataIndex][1] //重新计算总和
+                                }
+                            }
+                        }
+                        return data3
+                    };
+                    series[series.length-1]["label"]["normal"]["formatter"] = fun1;
+                    myChart.setOption(option);
+
+                });
                 console.log(option);
 
-                if (option && typeof option === "object") {
-                    myChart.setOption(option, true);
-                }
+                // if (option && typeof option === "object") {
+                //     myChart.setOption(option, true);
+                // }
             }
         });
     }

@@ -93,7 +93,7 @@ class dailyPayAction {
         $save['date'] = $p['date'] ?? date("Y-m-d");
         $save['create_time'] = $p['date'] ? date("Y-m-d H:i:s", strtotime($p['date'])) : date("Y-m-d H:i:s");
 
-        if ($this->costModel->update($save, ['id' => $p['id']])) {
+        if ($this->costModel->create($save, ['id' => $p['id']])) {
             $this->autoUpdateBalance();
             jsonBack('succ', 1, $save);
         } else {
@@ -218,8 +218,8 @@ class dailyPayAction {
         }
 
         $where['uid'] = getAccount();
-        $data = $this->costModel->getPageData($p, $where);
-
+        $data = $this->db->table($this->costModel->getTable())->where($where)->select();
+//        jsonBack($this->costModel->getLastSql());
         $typeData = $this->getAccountType(true);
         $typeArr = array_column($typeData, NULL,'id');
         $typeName = array_column($typeData, 'name');
@@ -229,12 +229,10 @@ class dailyPayAction {
 
         $color = ['#5e7e54','#e44f2f','#81b6b2','#eba422','#5e7e54',
             '#e44f2f','#81b6b2','#eba422','#5e7e54','#e44f2f'];
-        foreach ($data['list'] as $row){
+        foreach ($data as $row){
             $month = date('Y-m', strtotime($row['date']));
             $barData[$row['type']][$month] += $row['money'];
         }
-        jsonBack($barData);
-
 
         foreach ($ret['category'] as $d){
             foreach ($barData as $type => $row) {
@@ -243,14 +241,14 @@ class dailyPayAction {
                 }
             }
         }
-                jsonBack($barData);
 
         $data = [];
         foreach ($barData as $type => $row){
+            ksort($row);
             $r['name'] = $typeArr[$type]['name'];
             $r['type'] = 'bar';
             $r['stack'] = '总量';
-            $r['label']['normal'] = ['show' => true, 'position' => 'insideRight'];
+            $r['label']['normal'] = ['show' => false, 'position' => 'insideRight'];
 //            $r['itemStyle']['normal'] = ['color' => $color[$type]];
             $r['data'] = array_values($row);
             $data[] = $r;
