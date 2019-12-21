@@ -82,6 +82,7 @@ class dailyPayAction {
     # 添加数据
     function addDailyPay(){
         $p = $this->pdata;
+
         $money = $p['money'];
         if (!(is_float($money) || is_numeric($money))) {
             jsonBack("费用有误");
