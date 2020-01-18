@@ -79,6 +79,46 @@ class dailyPayAction {
         jsonBack('succ', 1, $data);
     }
 
+    # 获取数据
+    function getPhoneDailyPay(){
+        $p = $this->pdata;
+        $typeModel = \Alice\model\CostTypeModel::init();
+        $typeData  = $typeModel->lists(['key' => 'id']);
+
+//        $p['start_time'] = '2019-12-01';
+        $p['date'] = $p['date'].'-01';
+        $startDate = $p['date'] ? date('Y-m-01', strtotime($p['date'])) : date('Y-m-01');
+        $endDate = $p['date'] ? date('Y-m-d', strtotime("{$p['date']} +1 month -1 day")) : date('Y-m-01');
+        $where['date'] = ['between', [$startDate, $endDate]];
+
+        if (!empty($p['type']) && $p['type'] != 'all'){
+            $where['type'] = $p['type'];
+        }
+
+        $where['uid'] = getAccount();
+
+        $data = $this->costModel->getPageData($p, $where);
+        $week = array("日","一","二","三","四","五","六");
+
+        foreach ($data['list'] as $r){
+            $date = $r['date'];
+            $r['type_name'] = $typeData[$r['type']]['name'];
+            $ret['data'][$date]['data'][] = $r;
+            $ret['data'][$date]['date'] = date("d", strtotime($date))."日-星期".$week[date("w", strtotime($date))];
+            if (!isset($ret['data'][$date]['income'])) $ret['data'][$date]['income'] = 0;
+            if (!isset($ret['data'][$date]['pay'])) $ret['data'][$date]['pay'] = 0;
+            if ($r['type'] == 30){
+                # 收入
+                $ret['data'][$date]['income'] = $ret['total_pay'] += $r['money'];
+            } else {
+                # 支出
+                $ret['data'][$date]['pay'] += $r['money'];
+                $ret['total_pay'] -= $r['money'];
+            }
+        }
+        jsonBack('succ', 1, $ret);
+    }
+
     # 添加数据
     function addDailyPay(){
         $p = $this->pdata;

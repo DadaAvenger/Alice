@@ -130,7 +130,8 @@ var Calculator = {
                     for (var i in arr){
                         var tableRow = `
                             <tr class="odd gradeX">
-                                <td>${arr[i]['date']}</td>
+                                <td class="description" n="date" v="${arr[i]['id']}" did="${arr[i]['id']}">${arr[i]['id']}</td>
+                                <td class="description" n="date" v="${arr[i]['date']}" did="${arr[i]['id']}">${arr[i]['date']}</td>
                                 <td class="money" n="money" v="${arr[i]['money']}" did="${arr[i]['id']}">${arr[i]['money']}</td>
                                 <td class="description" n="description" v="${arr[i]['mark']}" id="${arr[i]['id']}">${arr[i]['mark']}</td>
                                 <td class="description" n="type" v="${arr[i]['type_name']}" id="${arr[i]['id']}">${arr[i]['type_name']}</td>
