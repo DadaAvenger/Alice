@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Daily</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<style type="text/css">
+.hui-tab-item{border:0px;}
+.hui-flex{background:#333333;}
+.demo{width:100%; height:80px; text-align:center; color:#FFF; line-height:40px; font-size:10px; margin:5px;}
+p{color:#FFF;}
+.big-money{color:#FFF; font-size:25px;}
+.hui-date{font-size:12px;color:#919191;}
+.money-total-one{width:60%;}
+.money-total-two{width:40%;}
+.money-item-one{width:80%;}
+.money-item-two{width:20%;}
+.item-detal{margin-left: 30px;}
+
+</style>
+  <!-- 日期插件 end-->
+    <!-- 日期插件 start-->
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/date.css">
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js" type="text/javascript"><\/script>')</script>
+
+    <!-- 手机版日期控件用于的css -->
+    <link href="mobiscroll/css/mobiscroll.scroller.css"rel="stylesheet" type="text/css" />
+    <link href="mobiscroll/css/mobiscroll.scroller.ios7.css" rel="stylesheet" type="text/css" />
+    <link href="mobiscroll/css/mobiscroll.animation.css"rel="stylesheet" type="text/css" />
+    <!-- 手机版日期控件用于的js -->
+    <script src="mobiscroll/js/mobiscroll.core.js"></script>
+    <script src="mobiscroll/js/mobiscroll.scroller.js"type="text/javascript"></script>
+    <script src="mobiscroll/js/mobiscroll.select.js"type="text/javascript"></script>
+    <script src="mobiscroll/js/mobiscroll.datetime.js"type="text/javascript"></script>
+    <script src="mobiscroll/js/mobiscroll.scroller.ios7.js"type="text/javascript"></script>
+    <script src="mobiscroll/js/i18n/mobiscroll.i18n.zh.js"type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+
+
+
+    <!-- END PLUGIN CSS -->
+    <!-- BEGIN CORE CSS FRAMEWORK -->
+    <link href="bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/webarch.css" rel="stylesheet" type="text/css" />
+<!--    <script src="webarch/js/webarch.js" type="text/javascript"></script>-->
+
+
+</head>
+
+<body>
+<header class="hui-header">
+    <div id="hui-back"></div>
+    <h1>记账</h1>
+    <div id="hui-header-menu" onclick="hui.showSlideMenu();"></div>
+</header>
+
+<div class="hui-wrap">
+    <div class="hui-flex">
+        <div class="demo">
+            <!-- <div class="ui-date-slectdate"> -->
+            <p>月份</p>
+            <input id="tmonth"  value="" class="ui-date-scroll ui-date-txt big-money"
+                   readonly style="color:white;font-size:25px;outline:none;border-style:none none none none;
+                    width:141px;padding:0 0 0 2px!important;background-color:transparent;min-height:37px;text-align:center;"></input>
+        </div>
+        <div class="demo"><p>支出(元)</p><p class="big-money" id="total-pay">0.0</p></div>
+        <div class="demo"><p>余额(元)</p><p class="big-money">0.0</p></div>
+    </div>
+    <div style="padding:28px 0px;">
+        <div class="hui-tab">
+            <div class="hui-tab-title">
+                <div>明细</div>
+                <div>总览</div>
+                <div>预算</div>
+            </div>
+            <div class="hui-tab-body">
+                <div class="hui-tab-body-items">
+                    <!--明细-->
+                    <div class="hui-tab-item hui-list" id="daily-data">
+                        <div style="line-height: 49px;height: 49px;width: 100%;margin-left: 12px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: flex;justify-content: space-between;">暂无信息</div>
+<!--                        <div class="hui-list-text">-->
+<!--                            <div class="hui-date money-total-one">-->
+<!--                            </div>-->
+<!--                            <div class="hui-date money-total-two" style="">-->
+<!--                                支出：11&nbsp;&nbsp;收入：22-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <a onclick="">-->
+<!--                            <div class="hui-list-text item-detal">-->
+<!--                                <div class="money-item-one">-->
+<!--                                    炸鸡-->
+<!--                                </div>-->
+<!--                                <div class="money-item-two" style="color: green;">-->
+<!--                                    +111-->
+<!--                                    <div class="money-item-two" style="color: red;">-->
+<!--                                        -222-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+                    </div>
+
+                    <!--总览-->
+                    <div class="hui-tab-item hui-list" id="container_f">
+                        <div id="container" style="height: 500px"></div>
+                        <div id="container_list"></div>
+                    </div>
+
+                    <!--预算-->
+                    <div class="hui-tab-item hui-list">
+                        <div>
+                            <form style="padding:28px 10px;" class="hui-form" id="form2">
+                                <div class="hui-form-items">
+                                    <div class="hui-form-bal">系统默认预算</div>
+                                    <input type="text" class="hui-input hui-input-clear" name="nickname" value="" readonly="readonly"/>
+                                </div>
+                                <div class="hui-form-items">
+                                    <div class="hui-form-bal">设置默认预算</div>
+                                    <input type="text" class="hui-input hui-input-clear" name="nickname" placeholder=""  id="u_default_budget" />
+                                </div>
+                                <div class="hui-form-items">
+                                    <div class="hui-form-bal">设置当月预算</div>
+                                    <input type="text" class="hui-input hui-input-clear" name="nickname" placeholder="" id="month_budget"/>
+                                </div>
+
+                                <div style="padding:15px 8px;">
+                                    <button type="button" class="hui-button hui-primary hui-fr" id="submitBtn2">提交数据</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="position: fixed;bottom: 0;width:100%;">
+        <button type="button" class="hui-button hui-button-large" id="btn3" style="margin-top:15px;"  onclick="hui.shwoBlackMasker();">+记一笔</button>
+    </div>
+    <div id="hui-black-mask" style="display: none;">
+        <!-- 演示消息内容 -->
+        <div id="hui-black-mask-content" style=" width:80%;">
+            <div id="hui-black-action">
+                <div id="hui-black-close"></div>
+            </div>
+            <div style="text-align:center; color:#FFFFFF; line-height:60px;">
+                <form style="padding:28px 10px;" class="hui-form" id="form1">
+                    <div class="hui-form-items">
+                        <div class="hui-form-items-title">大洋</div>
+                        <input type="text" class="hui-input hui-input-clear" name="nickname" id="cost" placeholder="100" />
+                    </div>
+                    <div class="hui-form-items">
+                        <div class="hui-form-items-title">备注</div>
+                        <input type="text" class="hui-input hui-input-clear" name="nickname" id="mark" placeholder="如：炸鸡" />
+                    </div>
+                    <div class="hui-form-items">
+                        <div class="hui-form-items-title" style="line-height: 48px;height: 100%;">类别</div>
+<!--                        <div class="hui-form-radios" style="line-height:38px;padding: 0;width: 78% !important;" id="type">-->
+                            <select id="source" style="width:100%">
+                            </select>
+<!--                            <input list="browsers">-->
+<!--                            <datalist id="browsers">-->
+<!--                                <option value="Internet Explorer">-->
+<!--                                <option value="Firefox">-->
+<!--                                <option value="Chrome">-->
+<!--                                <option value="Opera">-->
+<!--                                <option value="Safari">-->
+<!--                            </datalist>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="hui-form-items">
+                        <div class="hui-form-items-title" style="height: 100%;line-height: 36px;">时间</div>
+                        <td class="ui-date-slectdate">
+                            <input id="nowDate" value="" class="ui-date-scroll2 ui-date-txt ui-date-input"  style="font-size:18px;outline:none;border-style:none none none none;
+                    width:141px;padding:0 0 0 2px!important;background-color:transparent;min-height:37px;text-align:center;" readonly/>
+                        </td>
+                    </div>
+                    <div style="padding:15px 8px;">
+                        <button type="button" class="hui-button hui-primary hui-fr" id="submitBtn">提交数据</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hui-slide-menu">
+    <ul>
+        <li id="username">用户名：</li>
+        <li style="padding-top: 100px;">
+            <a type="button" class="hui-button hui-button-large hui-danger" id="logout">退出登录</a>
+        </li>
+    </ul>
+</div>
+<script src="js/hui.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/hui-tab.js" type="text/javascript"></script>
+<script src="js/select2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+ $("#source").select2();
+  hui.tab('.hui-tab');
+  hui.blackMask();
+  var myDate = new Date();  
+  var truemonth = myDate.getMonth()+1;
+  if (truemonth < 10) truemonth = '0'+truemonth;
+  var tmonth = myDate.getFullYear() + '-' + truemonth;
+  $('#tmonth').html(tmonth);
+
+ var date = function datetes() {
+
+     var $nowDate;
+     var opts;
+     var lastSelect;
+     console.log(12);
+
+     //初始化变量
+     function _initValue(options) {
+         $nowDate = $(options.id);
+         opts = options;
+         lastSelect = $nowDate.val();
+     }
+
+     //校验选择的时间是否有效
+     function _isDateValid(validDate) {
+         if (validDate) {
+             if (validDate == lastSelect) {return false};
+             var curDate = utils.toyyyymmdd(new Date());
+             if (!utils.compareDate(validDate, curDate)) {
+                 _initScroll($.extend(opts,{date:lastSelect}));
+                 alert('时间不能大于今天');
+                 return false;
+             }
+             return true;
+         }
+
+         return false;
+     }
+
+     //初始化日期操作
+     function _initDateOpear(callback) {
+         $('.ui-date-opear').click(function() {
+             var curDay = $nowDate.val();
+             var op = $(this).data('op');
+             var date = utils.toyyyymmdd(utils.adjustDate(op, curDay));
+             if (!_isDateValid(date)) {
+                 return;
+             }
+             callback.call(this, date);
+             _initScroll($.extend(opts,{date:date}));
+             _initWeek(date);
+         });
+     }
+
+     /**
+      * 设置日期星期
+      */
+     function _initWeek(date) {
+         lastSelect = date;
+         date = utils.toDateTime(date).getDay();
+         $('.ui-date-week').text(' 星期' + '日一二三四五六'.charAt(date));
+     }
+
+     function _initScrolltes(options) {
+         //设置当前日期
+         $nowDate.val(options.date);
+         //设置主题色 默认白底蓝字
+         if (options.theme) {$('.ui-date-bg').addClass(options.theme)};
+
+         var scrollSetting = {
+             preset: 'date',
+             theme: 'ios7',
+             mode: 'scroller',
+             lang: 'zh',
+             display: 'bottom',
+             animate: 'fade',
+             dateOrder: 'yymm', //面板中日期排列格式
+             dateFormat: 'yy-mm', // 日期格式
+             onSelect: function(valueText) {
+                 //检测时间是有效的情况下才更新时间
+                 if (_isDateValid(valueText)) {
+                     // console.log(this);
+                     options.onSelect.call(this, valueText);
+                     _initWeek(valueText);
+                 }
+             },
+             onChange: function() {},
+             onDestroy: function() {},
+             onShow: function() {}
+         }
+         //初始化滚轮控件
+         $('.ui-date-scroll').scroller($.extend({}, scrollSetting));
+     }
+
+     return {
+         init : function(options) {
+             _initValue(options);
+             _initScrolltes(options);
+             _initWeek(options.date);
+             _initDateOpear(options.onSelect);
+             return this;
+         }
+     }
+ }();
+ date.init(
+     {
+         date: tmonth,
+         id: '#tmonth',
+         // theme : 'blue',
+         onSelect: function (date) {
+             // console.log(date);
+         }
+     }
+ );
+
+  var tmoth = myDate.getFullYear() + '-' + truemonth + '-' + myDate.getUTCDate();
+
+ date2.init(
+     {
+         date: tmoth,
+         id: '#nowDate',
+         // theme : 'blue',
+         onSelect: function (date) {
+             // console.log(date);
+         }
+     }
+ );
+</script>
+<script type="text/javascript" src="cool/config.js"></script>
+<script type="text/javascript" src="cool/main.js"></script>
+<script type="text/javascript" src="cool/daily_pay.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+  <style type="text/css">
+    body{
+      background-color: #EEE;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row login-container column-seperation">
+    <div class="col-md-5 col-md-offset-1">
+      <h2>Sign in to webarch</h2>
+      <p>Use our account to sign in.<br>No BB!<br>真相は一つしかない</p>
+      <br>
+    </div>
+    <div class="col-md-5">
+      <br>
+      <form  class="login-form validate" id="login-form" method="post" name="login-form">
+        <div class="row">
+          <div class="form-group col-md-10">
+            <label class="form-label" for="username" id="username-label">Username</label>
+            <input class="form-control" id="username" name="username" type="text" required="required" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10">
+            <label class="form-label" for="password" id="password-label">Password</label> <span class="help"></span>
+            <input class="form-control" id="password" name="password" type="password" required="required" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="control-group col-md-10">
+            <div class="checkbox">
+              <label>
+                <input id="checkbox1" type="checkbox" value="1" name="remind" checked="checked">Keep me reminded
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <button id="login-submit" class="btn btn-primary btn-cons pull-right" type="button" style="padding-left: 20px;padding-right: 20px;">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JS START -->
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="cool/config.js"></script>
+<script type="text/javascript" src="cool/login.js"></script>
+<!-- JS END -->
+</body>
+</html>
