@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="785b6dc7-c681-4b61-8d1b-f99b83dc59a4" name="Default Changelist" comment="增加预算功能">
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/bower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/release.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/select2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/select2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/select2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/bootstrap-select2/select2x2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/calculator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/daily_pay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/echarts.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/cool/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/css/select2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/css/webarch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/js/jquery.flot.selection.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/js/select2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/phone/js/select2.min.js" afterDir="false" />
+    <list default="true" id="785b6dc7-c681-4b61-8d1b-f99b83dc59a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/phone/cool/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/phone/cool/config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,56 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/phone/cool/calculator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/action/dailyPayAction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="90" column="70" selection-start-line="90" selection-start-column="70" selection-end-line="90" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/web/charts.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15336">
-              <caret line="767" column="47" selection-start-line="767" selection-end-line="768" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#2;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/publicAction/publicAction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/phone/cool/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/phone/tab.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="57" column="6" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+            <state relative-caret-position="580">
+              <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -110,19 +52,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/phone/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="22" column="28" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="28" />
+            <state relative-caret-position="468">
+              <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/phone/js/date.js">
+        <entry file="file://$PROJECT_DIR$/action/dailyPayAction.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1584">
-              <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+            <state relative-caret-position="488">
+              <caret line="99" column="50" selection-start-line="99" selection-start-column="50" selection-end-line="99" selection-end-column="50" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/phone/cool/chart.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -133,6 +80,33 @@
               <folding>
                 <marker date="1578470722722" expanded="true" signature="925:1059" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/phpstorm.vmoptions">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/common.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/DB.config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -227,7 +201,6 @@
         <option value="$PROJECT_DIR$/web/phoneweb/phone/tab.html" />
         <option value="$PROJECT_DIR$/web/phoneweb/phone/login.html" />
         <option value="$PROJECT_DIR$/web/phoneweb/login.html" />
-        <option value="$PROJECT_DIR$/web/phone/login.html" />
         <option value="$PROJECT_DIR$/web/phone/cool/main.js" />
         <option value="$PROJECT_DIR$/web/phone/cool/login.js" />
         <option value="$PROJECT_DIR$/publicAction/publicAction.php" />
@@ -241,6 +214,8 @@
         <option value="$PROJECT_DIR$/web/phone/webarch/js/webarch.js" />
         <option value="$PROJECT_DIR$/web/phone/js/date.js" />
         <option value="$PROJECT_DIR$/web/phone/tab.html" />
+        <option value="$PROJECT_DIR$/web/phone/login.html" />
+        <option value="$PROJECT_DIR$/web/phone/cool/config.js" />
       </list>
     </option>
   </component>
@@ -258,6 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -299,20 +275,32 @@
               <item name="Alice" type="b2602c69:ProjectViewProjectNode" />
               <item name="Alice" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="DadaAvenager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Alice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alice" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="phone" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Alice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alice" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="phone" type="462c0819:PsiDirectoryNode" />
+              <item name="cool" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/phone" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -367,7 +355,11 @@
       <workItem from="1576908028772" duration="30949000" />
       <workItem from="1578879702846" duration="531000" />
       <workItem from="1579053224425" duration="497000" />
-      <workItem from="1579224733214" duration="2420000" />
+      <workItem from="1579224733214" duration="4946000" />
+      <workItem from="1582507763635" duration="985000" />
+      <workItem from="1582510344151" duration="666000" />
+      <workItem from="1582769669535" duration="136000" />
+      <workItem from="1583484979395" duration="2581000" />
     </task>
     <task id="LOCAL-00001" summary="upload program">
       <created>1575255949329</created>
@@ -628,17 +620,52 @@
       <option name="project" value="LOCAL" />
       <updated>1579330163526</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="增加预算功能">
+      <created>1579333353045</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1579333353045</updated>
+    </task>
+    <task id="LOCAL-00039" summary="增加预算功能">
+      <created>1579334278638</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1579334278638</updated>
+    </task>
+    <task id="LOCAL-00040" summary="增加预算功能">
+      <created>1579334872849</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1579334872849</updated>
+    </task>
+    <task id="LOCAL-00041" summary="增加预算功能">
+      <created>1583485924986</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1583485924986</updated>
+    </task>
+    <task id="LOCAL-00042" summary="增加预算功能">
+      <created>1583487109417</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1583487109417</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141262000" />
+    <option name="totallyTimeSpent" value="148156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="45" width="1904" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21589689" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2244898" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -651,8 +678,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32992035" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32992035" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49946293" visible="true" weight="0.21615472" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053704" side_tool="true" visible="true" weight="0.21615472" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -687,25 +714,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="增加预算功能" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/web/calender.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/phoneweb/js/app.js" />
     <entry file="file://$PROJECT_DIR$/web/phoneweb/index.php" />
-    <entry file="file://$PROJECT_DIR$/common/DB.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/phoneweb/phone/css/bootstrap-theme.min.css" />
     <entry file="file://$PROJECT_DIR$/web/phoneweb/phone/css/bootstrap.min.css" />
     <entry file="file://$PROJECT_DIR$/web/phoneweb/phone/js/jquery-3.1.1.min.js" />
@@ -753,31 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/cool/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/action/indexAction.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="21" column="65" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/cool/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
@@ -841,9 +830,7 @@
     <entry file="file://$PROJECT_DIR$/web/phone/js/jquery.flot.selection.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/assets/js/cool/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/assets/js/cool/main.js" />
     <entry file="file://$PROJECT_DIR$/web/web/webarch/css/webarch.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -901,20 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/cool/calculator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/action/dailyPayAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="90" column="70" selection-start-line="90" selection-start-column="70" selection-end-line="90" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/web/charts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15336">
@@ -938,12 +911,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/webarch/js/webarch.js">
+    <entry file="file://$PROJECT_DIR$/web/phone/webarch/js/webarch.js" />
+    <entry file="file://$PROJECT_DIR$/web/phone/cool/calculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9480">
-          <caret line="395" column="5" selection-start-line="395" selection-start-column="5" selection-end-line="395" selection-end-column="5" />
+        <state relative-caret-position="1632">
+          <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/cool/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/publicAction/publicAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/bootstrap-select2/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/api/api.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -955,27 +946,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/publicAction/publicAction.php">
+    <entry file="file://$PROJECT_DIR$/common/common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        <state relative-caret-position="456">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/bootstrap-select2/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/phone/login.html">
+    <entry file="file://$PROJECT_DIR$/common/DB.config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="28" />
+        <state relative-caret-position="600">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/phpstorm.vmoptions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/phone/tab.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="57" column="6" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+        <state relative-caret-position="580">
+          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -984,6 +979,30 @@
             <element signature="n#style#0;n#input#0;n#td#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/dailyPayAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="99" column="50" selection-start-line="99" selection-start-column="50" selection-end-line="99" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/cool/chart.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/phone/cool/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
