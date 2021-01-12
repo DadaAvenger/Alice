@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Zero
@@ -8,11 +9,11 @@
 
 namespace Alice\model;
 
-class CostModel extends \Model
+class CostDetailModel extends \Model
 {
-    protected $table = "alice.cost";
+    protected $table = "alice.cost_detail";
     protected $fields = [
-        'id','date','create_time','uid','type','money','mark'
+        'id', 'date', 'create_time', 'uid', 'type', 'money', 'mark'
     ];
 
     public function __construct()

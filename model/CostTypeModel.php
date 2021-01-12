@@ -10,7 +10,9 @@ namespace Alice\model;
 class CostTypeModel extends \Model
 {
     protected $table = "alice.cost_type";
-
+    protected $fields = [
+        'id','type_name'
+    ];
 
     public function __construct()
     {
